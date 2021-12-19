@@ -18,7 +18,7 @@ interface NavItemProps {
 
 function NavItem({ Icon, text }: NavItemProps) {
   return (
-    <li className="hover-bordered">
+    <li>
       <a>
         <Icon size={20} />
       </a>
