@@ -1,10 +1,10 @@
 export interface Ipage {
-  [keys: string]: any;
+  [keys: string]: unknown;
   block: {
     [id: string]: {
-      [keys: string]: any;
+      [keys: string]: unknown;
       value: {
-        [keys: string]: any;
+        [keys: string]: unknown;
         id: string;
         type: string;
       };
