@@ -14,6 +14,6 @@ export interface Ipage {
 
 export function getPageBlocks(page: Ipage): string[] {
   return Object.keys(page.block).filter((blockId) => {
-    return page.block[blockId].value.type === 'page';
+    return page.block[blockId].value.type === "page";
   });
 }
