@@ -15,7 +15,7 @@ services:
       - db
     volumes:
       - ./server:/app
-    command: sh -c "yarn install && yarn run start:dev"
+    command: sh -c "yarn install && yarn run dev"
     ports:
        - 3001:3001
     environment:
