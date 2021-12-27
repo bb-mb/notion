@@ -1,6 +1,7 @@
+import { Ipage } from "@/types";
 import mongoose from "mongoose";
 
-const pageSchema = new mongoose.Schema({
+const pageSchema = new mongoose.Schema<Ipage>({
   author: String,
   title: String,
   value: Object,
@@ -14,4 +15,4 @@ const pageSchema = new mongoose.Schema({
   coments: [{ text: String, date: Date }],
 });
 
-export const Page = mongoose.model("Page", pageSchema);
+export const Page = mongoose.model<Ipage>("Page", pageSchema);

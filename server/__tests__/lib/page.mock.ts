@@ -1,6 +1,9 @@
-import { Ipage } from "@/lib/parse";
+import { Page } from "@/models";
+import { INotionPage } from "@/types/models";
 
-export const rootPage: Ipage = {
+export const MockPage = Page;
+
+export const rootPage: INotionPage = {
   block: {
     "ca74dddb-66fe-4c12-81fa-c1c0518ee320": {
       role: "reader",

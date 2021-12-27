@@ -1,19 +1,15 @@
-export interface Ipage {
-  [keys: string]: unknown;
-  block: {
-    [id: string]: {
-      [keys: string]: unknown;
-      value: {
-        [keys: string]: unknown;
-        id: string;
-        type: string;
-      };
-    };
-  };
-}
+import { Model } from "mongoose";
+import { INotionPage, IPage } from "@/types/models";
 
-export function getPageBlocks(page: Ipage): string[] {
-  return Object.keys(page.block).filter((blockId) => {
-    return page.block[blockId].value.type === "page";
-  });
+export class PageParser {
+  model: Model<IPage>;
+  constructor(model: Model<IPage>) {
+    this.model = model;
+  }
+
+  getPageBlocks(page: INotionPage): string[] {
+    return Object.keys(page.block).filter((blockId) => {
+      return page.block[blockId].value.type === "page";
+    });
+  }
 }
