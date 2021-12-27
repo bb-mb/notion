@@ -2,6 +2,7 @@ import { Ipage } from "@/types";
 import mongoose from "mongoose";
 
 const pageSchema = new mongoose.Schema<Ipage>({
+  pageId: String,
   author: String,
   title: String,
   value: Object,
