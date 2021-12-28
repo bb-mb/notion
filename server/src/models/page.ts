@@ -5,6 +5,7 @@ const pageSchema = new mongoose.Schema<Ipage>({
   pageId: String,
   author: String,
   title: String,
+  thumbnail: String,
   value: Object,
   cleanUrl: String,
   count: {
@@ -13,7 +14,6 @@ const pageSchema = new mongoose.Schema<Ipage>({
   },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
-  coments: [{ text: String, date: Date }],
 });
 
 export const Page = mongoose.model<Ipage>("Page", pageSchema);

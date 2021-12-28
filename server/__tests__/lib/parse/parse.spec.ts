@@ -15,5 +15,18 @@ describe("노션 페이지 파싱 테스트", () => {
     expect(await pageParser.fetchNotionAllPages(rootPageId)).toEqual(notionDB);
   });
 
-  test("createPageDoc - page 모델 mongoose document 생성", () => {});
+  // test("createPageDoc - page 모델 mongoose document 생성", () => {
+  //   Date.now = jest.fn().mockReturnValue(1640699483166);
+  //   expect(
+  //     pageParser.createPageDocument(notionDB[rootPageId], "userName")
+  //   ).toEqual({
+  //     pageId: rootPageId,
+  //     author: "userName",
+  //     title: "테스트",
+  //     thumbnail: "",
+  //     value: notionDB[rootPageId],
+  //     cleanUrl: rootPageId,
+  //     updatedAt: new Date(1640699483166),
+  //   });
+  // });
 });

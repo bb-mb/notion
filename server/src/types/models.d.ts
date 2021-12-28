@@ -4,12 +4,12 @@ export interface IPage {
   pageId: string;
   author: string;
   title: string;
+  thumbnail: string;
   value: object;
   cleanUrl: string;
   count: number;
   createdAt: date;
   updatedAt: date;
-  coments: [{ text: string; date: date }?];
 }
 
 export interface INotionPageMap {

@@ -2,7 +2,7 @@ import { Model } from "mongoose";
 import { NotionAPI } from "notion-client";
 import { getAllPagesInSpace } from "notion-utils";
 
-import { INotionPageMap, IPage } from "@/types/models";
+import { INotionPage, INotionPageMap, IPage } from "@/types/models";
 import { ParseHelper } from "./parseHelper";
 
 export class PageParser {
@@ -16,7 +16,7 @@ export class PageParser {
     this.parseHelper = new ParseHelper();
   }
 
-  async parse(rootPageId: string) {
+  async parse(rootPageId: string, userName: string) {
     const pages: INotionPageMap = await this.fetchNotionAllPages(rootPageId);
   }
 
@@ -27,4 +27,8 @@ export class PageParser {
       this.notion.getPage.bind(this.notion)
     );
   }
+
+  // createPageDocument(page: INotionPage, userName: string): IPage {
+  //   return {};
+  // }
 }

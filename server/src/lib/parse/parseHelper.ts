@@ -27,4 +27,8 @@ export class ParseHelper {
 
     return defaultMapImageUrl(source, imageBlock.value);
   }
+
+  getPageId(page: INotionPage) {
+    return Object.keys(page.block)[0];
+  }
 }

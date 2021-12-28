@@ -7,7 +7,7 @@
     "build": "yarn clean && tsc -p tsconfig.build.json",
     "dev": "nodemon --watch \"src/**/*.ts\" --exec \"ts-node\" src/app.ts",
     "test": "jest",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --clearCache && jest --watch",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
