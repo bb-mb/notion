@@ -7,4 +7,5 @@ module.exports = {
     "^@/(.*)$": "<rootDir>/src/$1",
   },
   testMatch: ["**/*.spec.(t|j)s"],
+  maxWorkers: 1,
 };

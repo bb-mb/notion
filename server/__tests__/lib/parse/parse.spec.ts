@@ -89,4 +89,21 @@ describe("노션 페이지 파싱 테스트", () => {
       },
     ]);
   });
+
+  test("getImageUrl - 이미지 주소 추출", () => {
+    expect(
+      pageParser
+        .getBlocks(notionDB[rootPageId], "image")
+        .map((block) => pageParser.getImageUrl(block))
+    ).toEqual([
+      "https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe4cbe811-0d3b-4293-9892-1b11007c7257%2F1.jpeg?table=block&id=10b1ea52-a6bc-4295-895c-f4078b7a4aed&cache=v2",
+      "https://images.unsplash.com/photo-1495231916356-a86217efff12?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb",
+    ]);
+  });
+
+  test("getPageThumbnail - 썸네일 추출", () => {
+    expect(pageParser.getPageThumbNail(notionDB[rootPageId])).toBe(
+      "https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe4cbe811-0d3b-4293-9892-1b11007c7257%2F1.jpeg?table=block&id=10b1ea52-a6bc-4295-895c-f4078b7a4aed&cache=v2"
+    );
+  });
 });

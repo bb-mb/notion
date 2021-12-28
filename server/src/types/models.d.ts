@@ -1,3 +1,5 @@
+import { Block } from "notion-types";
+
 export interface IPage {
   pageId: string;
   author: string;
@@ -15,13 +17,10 @@ export interface INotionPageMap {
 }
 
 export interface INotionBlock {
-  [keys: string]: any;
-  value: {
-    [keys: string]: any;
-    id: string;
-    type: string;
-  };
+  role: string;
+  value: Block;
 }
+
 export interface INotionPage {
   [keys: string]: any;
   block: {
