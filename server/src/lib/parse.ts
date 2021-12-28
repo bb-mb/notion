@@ -1,7 +1,8 @@
 import { Model } from "mongoose";
 import { NotionAPI } from "notion-client";
 
-import { INotionPage, IPage } from "@/types/models";
+import { INotionPage, INotionPageMap, IPage } from "@/types/models";
+import { getAllPagesInSpace } from "notion-utils";
 
 export class PageParser {
   page: Model<IPage>;
@@ -14,20 +15,15 @@ export class PageParser {
     this.checked = [];
   }
 
-  parseRecord() {}
-
-  parsePage(pageId: string) {}
-
-  async fetchPage(pageId: string): Promise<[INotionPage, IPage | null]> {
-    return [
-      await this.notion.getPage(pageId),
-      await this.page.findOne({ pageId }),
-    ];
+  async parseRecord(rootPageId: string) {
+    const pages: INotionPageMap = await this.fetchNotionAllPages(rootPageId);
   }
 
-  getPageBlocks(page: INotionPage): string[] {
-    return Object.keys(page.block).filter((blockId) => {
-      return page.block[blockId].value.type === "page";
-    });
+  async fetchNotionAllPages(pagdId: string) {
+    return await getAllPagesInSpace(
+      pagdId,
+      undefined,
+      this.notion.getPage.bind(this.notion)
+    );
   }
 }
