@@ -20,15 +20,22 @@ export class ParseHelper {
     );
   }
 
-  getImageUrl(imageBlock: { value: ImageBlock }) {
-    const source =
-      imageBlock.value.properties?.source?.[0]?.[0] ??
-      imageBlock.value.format?.display_source;
+  getImageUrl(block: { value: ImageBlock }) {
+    if (!block) {
+      return "";
+    }
 
-    return defaultMapImageUrl(source, imageBlock.value);
+    return defaultMapImageUrl(this.getImageSource(block.value), block.value);
   }
 
   getPageId(page: INotionPage) {
     return Object.keys(page.block)[0];
+  }
+
+  getImageSource(imageBlock: ImageBlock) {
+    return (
+      imageBlock.properties?.source?.[0]?.[0] ??
+      imageBlock.format?.display_source
+    );
   }
 }

@@ -7,6 +7,10 @@ MockPage.findOne = jest
   .fn()
   .mockImplementation(({ pageId }: { pageId: string }) => pageDB[pageId]);
 
+MockPage.findOneAndUpdate = jest.fn().mockImplementation((_, doc) => {
+  return doc.pageId;
+});
+
 export const pageDB: {
   [key in string]: IPage;
 } = {

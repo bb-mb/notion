@@ -7,8 +7,8 @@ export interface IPage {
   thumbnail: string;
   value: object;
   cleanUrl: string;
-  count: number;
-  createdAt: date;
+  count?: number;
+  createdAt?: date;
   updatedAt: date;
 }
 
