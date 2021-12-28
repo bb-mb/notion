@@ -8,14 +8,12 @@ import { ParseHelper } from "./parseHelper";
 export class PageParser {
   page: Model<IPage>;
   notion: NotionAPI;
-  checked: string[];
   parseHelper: ParseHelper;
 
   constructor(page: Model<IPage>, notion: NotionAPI) {
     this.page = page;
     this.notion = notion;
     this.parseHelper = new ParseHelper();
-    this.checked = [];
   }
 
   async parse(rootPageId: string) {
