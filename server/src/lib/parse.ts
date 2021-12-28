@@ -1,8 +1,8 @@
 import { Model } from "mongoose";
 import { NotionAPI } from "notion-client";
+import { getAllPagesInSpace, getPageTitle } from "notion-utils";
 
 import { INotionPage, INotionPageMap, IPage } from "@/types/models";
-import { getAllPagesInSpace } from "notion-utils";
 
 export class PageParser {
   page: Model<IPage>;
@@ -17,6 +17,10 @@ export class PageParser {
 
   async parseRecord(rootPageId: string) {
     const pages: INotionPageMap = await this.fetchNotionAllPages(rootPageId);
+  }
+
+  async getPageTitle(page: INotionPage) {
+    return await getPageTitle(page);
   }
 
   async fetchNotionAllPages(pagdId: string) {

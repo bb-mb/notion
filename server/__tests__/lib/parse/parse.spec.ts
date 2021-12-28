@@ -11,6 +11,10 @@ describe("노션 페이지 파싱 테스트", () => {
     pageParser = new PageParser(MockPage, mockNotion);
   });
 
+  test("getPageTitle - Page 블록에서 제목 가져오기", async () => {
+    expect(await pageParser.getPageTitle(notionDB[rootPageId])).toBe("테스트");
+  });
+
   test("fetchNotionAllPages", async () => {
     expect(await pageParser.fetchNotionAllPages(rootPageId)).toEqual(notionDB);
   });
