@@ -1,5 +1,3 @@
-import { ExtendedRecordMap } from "notion-types";
-
 export interface IPage {
   pageId: string;
   author: string;
@@ -12,4 +10,16 @@ export interface IPage {
   coments: [{ text: string; date: date }?];
 }
 
-export interface INotionPage extends ExtendedRecordMap {}
+export interface INotionPage {
+  [keys: string]: unknown;
+  block?: {
+    [id: string]: {
+      [keys: string]: unknown;
+      value: {
+        [keys: string]: unknown;
+        id: string;
+        type: string;
+      };
+    };
+  };
+}
