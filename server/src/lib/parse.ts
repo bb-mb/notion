@@ -30,4 +30,9 @@ export class PageParser {
       this.notion.getPage.bind(this.notion)
     );
   }
+
+  convertImageUrl(url: string): string {
+    if (url[0] === "/") return "https://notion.so" + url;
+    return url;
+  }
 }

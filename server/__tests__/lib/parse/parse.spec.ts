@@ -11,11 +11,19 @@ describe("노션 페이지 파싱 테스트", () => {
     pageParser = new PageParser(MockPage, mockNotion);
   });
 
+  test("fetchNotionAllPages", async () => {
+    expect(await pageParser.fetchNotionAllPages(rootPageId)).toEqual(notionDB);
+  });
+
   test("getPageTitle - Page 블록에서 제목 가져오기", async () => {
     expect(await pageParser.getPageTitle(notionDB[rootPageId])).toBe("테스트");
   });
 
-  test("fetchNotionAllPages", async () => {
-    expect(await pageParser.fetchNotionAllPages(rootPageId)).toEqual(notionDB);
+  describe("썸네일 설정", () => {
+    test("이미지 url 보정 - prefix notion.so", () => {
+      expect(
+        pageParser.convertImageUrl("/images/page-cover/woodcuts_1.jpg")
+      ).toBe("https://notion.so/images/page-cover/woodcuts_1.jpg");
+    });
   });
 });
