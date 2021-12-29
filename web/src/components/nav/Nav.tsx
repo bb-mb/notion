@@ -18,7 +18,6 @@ interface NavItemProps {
   text?: string;
 }
 
-// eslint-disable-next-line react/display-name
 const NavItem = ({ Icon, href = "/", text }: NavItemProps) => {
   return (
     <Link href={href} passHref>
