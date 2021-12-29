@@ -28,7 +28,7 @@ function NavItem({ Icon, text }: NavItemProps) {
 
 export function Nav() {
   return (
-    <ul className="flex menu py-3 shadow-lg bg-base-200 rounded-box">
+    <ul className="mr-2 flex menu py-3 shadow-lg bg-base-200 rounded-box">
       <div className="flex-1">
         <div className="flex justify-center cursor-pointer mt-2 mb-6">
           <Link href="/" passHref>

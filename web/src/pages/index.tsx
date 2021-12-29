@@ -1,13 +1,8 @@
 import type { NextPage } from "next";
-import { Nav } from "components/nav";
+import { Layout } from "components/layout";
 
 const Home: NextPage = () => {
-  return (
-    <div className="flex h-screen">
-      <Nav />
-      <div className="flex-1 "></div>
-    </div>
-  );
+  return <Layout></Layout>;
 };
 
 export default Home;
