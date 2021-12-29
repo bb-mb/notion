@@ -3,6 +3,8 @@ import mongoose from "mongoose";
 
 import { pageRouter } from "./routes";
 
+console.log(process.env.DB_URL);
+
 const PORT = 3001;
 const app = express();
 mongoose

@@ -19,7 +19,7 @@ services:
     ports:
        - 3001:3001
     environment:
-      - DB_URL=mongodb://mongo/nest
+      - DB_URL=mongodb://soso01:testtest@mongo/nest?authSource=admin 
   db:
     image: mongo
     container_name: mongo
