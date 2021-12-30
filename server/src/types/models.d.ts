@@ -12,6 +12,13 @@ export interface IPage {
   updatedAt: date;
 }
 
+export interface IUser {
+  firebaseId: stirng;
+  name: string;
+  email: string;
+  createdAt: date;
+}
+
 export interface INotionPageMap {
   [key: stirng]: INotionPage | null;
 }

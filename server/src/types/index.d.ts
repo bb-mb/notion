@@ -1,1 +1,1 @@
-export { Ipage } from "./models.d";
+export * from "./models.d";
