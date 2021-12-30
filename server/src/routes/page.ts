@@ -13,7 +13,6 @@ interface IParseRequestBody {
 
 router.post("/parse", async (req, res) => {
   const { rootPageId, userName }: IParseRequestBody = req.body;
-  console.log(rootPageId);
   const pageParser = new PageParser(Page, new NotionAPI());
   const result = await pageParser.parse(rootPageId, userName);
   res.send(result);
