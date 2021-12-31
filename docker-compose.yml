@@ -21,6 +21,8 @@ services:
     ports:
        - 3001:3001
     environment:
+      - JWT_ACCESS_KEY=safjsdjafs021#!@fweif@#d
+      - JWT_REFRESH_KEY=we@!#!Efasfsafdssdf
       - DB_URL=mongodb://soso01:testtest@mongo/nest?authSource=admin 
   db:
     image: mongo
