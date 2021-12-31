@@ -3,7 +3,6 @@ import admin from "firebase-admin";
 
 import { User } from "@/models";
 import { jwt } from "@/lib/jwt";
-import { IUser } from "@/types";
 
 export const router = Router();
 
