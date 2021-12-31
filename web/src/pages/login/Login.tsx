@@ -7,7 +7,7 @@ export const Login: NextPage = () => {
   const googleLogin = async () => {
     await signInWithPopup(getAuth(), new GoogleAuthProvider())
       .then(async (result) =>
-        axios.post("http://localhost:3001/auth/login", {
+        axios.post(process.env.NEXT_PUBLIC_SERVER_URL + "/auth/login", {
           tokenId: await result.user.getIdToken(),
         })
       )

@@ -7,7 +7,9 @@ services:
       - ./web:/app
     command: sh -c "yarn install && yarn run dev"
     ports:
-       - 3000:3000
+      - 3000:3000
+    environment:
+      - NEXT_PUBLIC_SERVER_URL=http://localhost:3001
   server:
     image: node:12-alpine
     working_dir: /app
