@@ -14,7 +14,6 @@ interface ILoginRequestBody {
 router.post("/login", async (req, res) => {
   try {
     const { tokenId }: ILoginRequestBody = req.body;
-
     const {
       sub: firebaseId,
       name,
@@ -22,18 +21,12 @@ router.post("/login", async (req, res) => {
     } = await admin.auth().verifyIdToken(tokenId);
 
     const userData = { firebaseId, name, email };
-
     await User.findOneAndUpdate({ firebaseId }, userData, {
       new: true,
       upsert: true,
     });
 
-    const key = {
-      accessToken: jwt.getAccessToken(userData),
-      refreshToken: jwt.getRefreshToken(userData),
-    };
-
-    res.json(key);
+    res.json(jwt.getTokens(userData));
   } catch (e) {
     res.status(403).json({ msg: "로그인 실패" });
   }

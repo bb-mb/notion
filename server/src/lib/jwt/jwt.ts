@@ -27,6 +27,13 @@ export class JWT {
     return jwt.sign(user, this.refreshKey, { expiresIn: "1m" });
   }
 
+  getTokens(user: IUser) {
+    return {
+      accessToken: this.getAccessToken(user),
+      refreshToken: this.getRefreshToken(user),
+    };
+  }
+
   verifyAccessToken(accessToken: string) {
     return jwt.verify(accessToken, this.accessKey);
   }
