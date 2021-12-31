@@ -5,12 +5,15 @@ import axios from "axios";
 import { Layout } from "components/layout";
 export const Login: NextPage = () => {
   const googleLogin = async () => {
-    await signInWithPopup(getAuth(), new GoogleAuthProvider()).then(
-      async (result) =>
+    await signInWithPopup(getAuth(), new GoogleAuthProvider())
+      .then(async (result) =>
         axios.post("http://localhost:3001/auth/login", {
           tokenId: await result.user.getIdToken(),
         })
-    );
+      )
+      .catch((e) => {
+        console.log("에러", e);
+      });
   };
 
   return (
