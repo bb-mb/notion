@@ -1,15 +1,12 @@
-import { AxiosResponse } from "axios";
+import { AxiosPromise } from "axios";
 import { toast } from "react-hot-toast";
+import { IApi } from "types";
 
-interface IApiResponse {
-  msg: string;
-  value?: string | object;
-}
-
-export function apiPromiseToast(callback: Promise<IApiResponse>) {
-  return toast.promise(callback, {
-    loading: "Loading...",
-    success: (res) => res.msg,
-    error: (res: IApiResponse) => res.msg,
-  });
+export function apiPromiseToast(callback: IApi) {
+  return () =>
+    toast.promise(callback, {
+      loading: "Loading...",
+      success: (res) => res.data.msg,
+      error: (res) => res.data.msg,
+    });
 }
