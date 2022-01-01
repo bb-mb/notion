@@ -3,14 +3,13 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import axios from "axios";
 
 import { Layout } from "components/layout";
+import { useLoginMutation } from "queries";
 export const Login: NextPage = () => {
+  const { mutate: loginMutate } = useLoginMutation();
+
   const googleLogin = async () => {
     await signInWithPopup(getAuth(), new GoogleAuthProvider())
-      .then(async (result) =>
-        axios.post(process.env.NEXT_PUBLIC_SERVER_URL + "/auth/login", {
-          tokenId: await result.user.getIdToken(),
-        })
-      )
+      .then(async (result) => loginMutate(await result.user.getIdToken()))
       .catch((e) => {
         console.log("에러", e);
       });

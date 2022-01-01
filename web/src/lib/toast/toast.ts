@@ -3,10 +3,9 @@ import { toast } from "react-hot-toast";
 import { IApi } from "types";
 
 export function apiPromiseToast(callback: IApi) {
-  return () =>
-    toast.promise(callback, {
-      loading: "Loading...",
-      success: (res) => res.data.msg,
-      error: (res) => res.data.msg,
-    });
+  return toast.promise(callback, {
+    loading: "Loading...",
+    success: (res) => res.data.msg,
+    error: (res) => res.data.msg,
+  });
 }
