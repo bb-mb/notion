@@ -1,11 +1,9 @@
-import { useMutation } from "react-query";
-
 import { api } from "lib/api";
 import { apiPromiseToast } from "lib/toast";
-import { IApiResponse } from "types";
+import { useCustomMutation } from "queries/utils";
 
 export const useLoginMutation = () =>
-  useMutation<IApiResponse, IApiResponse, string>(
+  useCustomMutation<string>(
     (tokenId) => apiPromiseToast(api.post("/auth/login", { tokenId })),
     {}
   );

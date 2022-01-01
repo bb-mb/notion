@@ -25,7 +25,7 @@ router.post("/login", async (req, res) => {
       upsert: true,
     });
 
-    res.json(jwt.getTokens(userData));
+    res.json({ msg: "로그인 성공!", value: jwt.getTokens(userData) });
   } catch (e) {
     res.status(403).json({ msg: "로그인 실패" });
   }
