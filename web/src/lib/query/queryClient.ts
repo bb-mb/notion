@@ -7,3 +7,6 @@ export const queryClient = new QueryClient({
     },
   },
 });
+
+export const invalidateQueries =
+  queryClient.invalidateQueries.bind(queryClient);

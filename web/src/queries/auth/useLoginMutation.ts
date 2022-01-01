@@ -1,7 +1,8 @@
 import { api } from "lib/api";
 import { apiPromiseToast } from "lib/toast";
-import { invalidateQuery, useCustomMutation } from "lib/query";
+import { useCustomMutation } from "lib/query";
 import { IApiResponse } from "types";
+import { invalidateQueries } from "lib/query/queryClient";
 
 export const useLoginMutation = () =>
   useCustomMutation<{ tokenId: string }>(
@@ -9,7 +10,7 @@ export const useLoginMutation = () =>
     {
       onSuccess: (res) => {
         saveTokens(res);
-        invalidateQuery();
+        invalidateQueries();
       },
     }
   );

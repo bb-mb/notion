@@ -20,6 +20,10 @@ class API {
         window.localStorage.getItem("accessToken") || "";
     }
   }
+
+  setInterceptor() {
+    this.api.interceptors.request.use();
+  }
 }
 
 // 이름을 뭘로 해야할지..
