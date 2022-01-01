@@ -3,6 +3,7 @@ import admin from "firebase-admin";
 
 import { User } from "@/models";
 import { jwt } from "@/lib/jwt";
+import { IUser } from "@/types";
 
 export const router = Router();
 
@@ -28,6 +29,27 @@ router.post("/login", async (req, res) => {
     res.json({ msg: "로그인 성공!", value: jwt.getTokens(userData) });
   } catch (e) {
     res.status(403).json({ msg: "로그인 실패" });
+  }
+});
+
+interface IRefreshRequestBody {
+  refreshToken: string;
+}
+
+router.post("refresh", (req, res) => {
+  const { refreshToken }: IRefreshRequestBody = req.body;
+
+  try {
+    const { firebaseId, name, email } = jwt.verifyRefreshToken(
+      refreshToken
+    ) as IUser;
+
+    res.json({
+      msg: "리프레쉬 성공",
+      value: { accessToken: jwt.getAccessToken({ firebaseId, name, email }) },
+    });
+  } catch {
+    res.status(403).json({ msg: "리프레쉬 실패" });
   }
 });
 
