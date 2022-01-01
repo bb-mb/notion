@@ -32,7 +32,9 @@ class API {
           response?.status === 401 &&
           window.localStorage.getItem("accessToken")
         ) {
+          console.log("in");
           const accessToken = await this.refresh();
+          console.log(accessToken);
           this.setAuthorization();
 
           if (accessToken) {

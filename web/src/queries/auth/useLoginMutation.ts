@@ -1,8 +1,7 @@
-import { api } from "lib/api";
+import { api, apiSetting } from "lib/api";
 import { apiPromiseToast } from "lib/toast";
-import { useCustomMutation } from "lib/query";
-
-import { invalidateQueries } from "lib/query/queryClient";
+import { useCustomMutation, invalidateQueries } from "lib/query";
+import { IApiResponse } from "types";
 
 export const useLoginMutation = () =>
   useCustomMutation<{ tokenId: string }>(
@@ -20,4 +19,5 @@ function saveTokens(res: IApiResponse) {
 
   localStorage.setItem("accessToken", accessToken);
   localStorage.setItem("refreshToken", refreshToken);
+  apiSetting.setAuthorization();
 }

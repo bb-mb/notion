@@ -20,7 +20,7 @@ export class JWT {
   }
 
   getAccessToken(user: IUser) {
-    return jwt.sign(user, this.accessKey, { expiresIn: "1d" });
+    return jwt.sign(user, this.accessKey, { expiresIn: "10s" });
   }
 
   getRefreshToken(user: IUser) {
