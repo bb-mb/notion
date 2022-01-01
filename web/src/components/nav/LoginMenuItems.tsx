@@ -2,7 +2,7 @@ import { CgLogIn, CgLogOut } from "react-icons/cg";
 
 import { apiSetting } from "lib/api";
 import { invalidateQueries } from "lib/query";
-import { PATH } from "lib/constants";
+import { MSG, PATH } from "lib/constants";
 import { NavItem } from "./NavItem";
 import { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
@@ -35,5 +35,5 @@ function useIsLogin() {
 function logout() {
   apiSetting.clear();
   invalidateQueries();
-  toast.success("로그아웃 완료");
+  toast.success(MSG.COMPLETE_LOGOUT);
 }
