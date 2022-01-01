@@ -64,6 +64,11 @@ class API {
       return null;
     }
   }
+
+  clear() {
+    clearLocalstorage();
+    this.setAuthorization();
+  }
 }
 
 function clearLocalstorage() {

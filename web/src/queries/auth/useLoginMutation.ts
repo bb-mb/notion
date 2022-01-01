@@ -1,3 +1,5 @@
+import router from "next/router";
+
 import { api, apiSetting } from "lib/api";
 import { apiPromiseToast } from "lib/toast";
 import { useCustomMutation, invalidateQueries } from "lib/query";
@@ -10,6 +12,7 @@ export const useLoginMutation = () =>
       onSuccess: (res) => {
         saveTokens(res);
         invalidateQueries();
+        router.push("/");
       },
     }
   );

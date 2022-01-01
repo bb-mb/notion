@@ -1,43 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { CgHome, CgEditMarkup, CgProfile } from "react-icons/cg";
 
-import { IconType } from "react-icons";
-import {
-  CgHome,
-  CgEditMarkup,
-  CgProfile,
-  CgLogIn,
-  CgLogOut,
-} from "react-icons/cg";
 import { PATH } from "lib/constants";
 import { OnlyClient } from "components/wrap";
 
-interface NavItemProps {
-  Icon: IconType;
-  href?: string;
-  text?: string;
-}
-
-const NavItem = ({ Icon, href = "/", text }: NavItemProps) => {
-  return (
-    <Link href={href} passHref>
-      <li>
-        <a>
-          <Icon size={20} />
-        </a>
-      </li>
-    </Link>
-  );
-};
-
-function LoginMenuItems() {
-  return getIsLogin() ? (
-    <NavItem Icon={CgLogIn} href={PATH.LOGIN} text="로그인" />
-  ) : (
-    <NavItem Icon={CgLogOut} text="Home" />
-  );
-}
+import { NavItem } from "./NavItem";
+import { LoginMenuItems } from "./LoginMenuItems";
 
 export function Nav() {
   return (
@@ -59,8 +29,4 @@ export function Nav() {
       </OnlyClient>
     </ul>
   );
-}
-
-function getIsLogin() {
-  return !!window.localStorage.getItem("accessToken");
 }
