@@ -1,10 +1,4 @@
-import {
-  MutationFunction,
-  MutationKey,
-  useMutation,
-  UseMutationOptions,
-  useQueries,
-} from "react-query";
+import { MutationFunction, useMutation, UseMutationOptions } from "react-query";
 import { IApiResponse } from "types";
 
 export function useCustomMutation<TVariables>(

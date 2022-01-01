@@ -1,10 +1,11 @@
 import { useEffect } from "react";
-import { QueryClientProvider, QueryClient } from "react-query";
+import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { Toaster } from "react-hot-toast";
 import type { AppProps } from "next/app";
 
 import { initFirebase } from "lib/setting";
+import { queryClient } from "lib/query";
 import "styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -13,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <QueryClientProvider client={new QueryClient()}>
+    <QueryClientProvider client={queryClient}>
       <Component data-theme="light" {...pageProps} />
       <Toaster />
       <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
