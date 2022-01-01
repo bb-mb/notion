@@ -11,6 +11,7 @@ import {
   CgLogOut,
 } from "react-icons/cg";
 import { PATH } from "lib/constants";
+import { OnlyClient } from "components/wrap";
 
 interface NavItemProps {
   Icon: IconType;
@@ -30,6 +31,14 @@ const NavItem = ({ Icon, href = "/", text }: NavItemProps) => {
   );
 };
 
+function LoginMenuItems() {
+  return getIsLogin() ? (
+    <NavItem Icon={CgLogIn} href={PATH.LOGIN} text="로그인" />
+  ) : (
+    <NavItem Icon={CgLogOut} text="Home" />
+  );
+}
+
 export function Nav() {
   return (
     <ul className="mr-2 flex menu py-3 shadow-lg bg-base-200 rounded-box">
@@ -45,9 +54,13 @@ export function Nav() {
         <NavItem Icon={CgEditMarkup} text="Home" />
         <NavItem Icon={CgProfile} text="Home" />
       </div>
-
-      <NavItem Icon={CgLogIn} href={PATH.LOGIN} text="로그인" />
-      <NavItem Icon={CgLogOut} text="Home" />
+      <OnlyClient>
+        <LoginMenuItems />
+      </OnlyClient>
     </ul>
   );
+}
+
+function getIsLogin() {
+  return !!window.localStorage.getItem("accessToken");
 }
