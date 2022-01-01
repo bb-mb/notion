@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import type { AppProps } from "next/app";
 
 import { initFirebase } from "lib/setting";
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={new QueryClient()}>
       <Component data-theme="light" {...pageProps} />
+      <ReactQueryDevtools initialIsOpen={false} position="bottom-right" />
     </QueryClientProvider>
   );
 }
