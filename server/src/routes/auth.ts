@@ -36,7 +36,7 @@ interface IRefreshRequestBody {
   refreshToken: string;
 }
 
-router.post("refresh", (req, res) => {
+router.post("/refresh", (req, res) => {
   const { refreshToken }: IRefreshRequestBody = req.body;
 
   try {
