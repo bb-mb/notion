@@ -1,4 +1,4 @@
-import axios, { Axios } from "axios";
+import axios, { Axios, AxiosError } from "axios";
 
 class API {
   api: Axios;
@@ -16,14 +16,58 @@ class API {
 
   setAuthorization() {
     if (typeof window !== "undefined") {
-      this.api.defaults.headers.common["Authorization"] =
-        window.localStorage.getItem("accessToken") || "";
+      const accessToken = window.localStorage.getItem("accessToken");
+      const authorization = accessToken ? `Bearer ${accessToken}` : "";
+      this.api.defaults.headers.common["Authorization"] = authorization;
     }
   }
 
   setInterceptor() {
-    this.api.interceptors.request.use();
+    this.api.interceptors.response.use(
+      (res) => res,
+      async (error: AxiosError) => {
+        const { config, response } = error;
+
+        if (
+          response?.status === 401 &&
+          window.localStorage.getItem("accessToken")
+        ) {
+          const accessToken = await this.refresh();
+          this.setAuthorization();
+
+          if (accessToken) {
+            return axios({
+              ...config,
+              headers: { Authorization: `Bearer ${accessToken}` },
+            });
+          }
+        }
+
+        return Promise.reject(error);
+      }
+    );
   }
+
+  async refresh() {
+    try {
+      const response = await this.api.post("/auth/refresh", {
+        refreshToken: window.localStorage.getItem("refreshToken"),
+      });
+      const accessToken = response.data.value.accessToken;
+      window.localStorage.setItem("accessToken", accessToken);
+
+      return accessToken;
+    } catch {
+      clearLocalstorage();
+
+      return null;
+    }
+  }
+}
+
+function clearLocalstorage() {
+  window.localStorage.removeItem("accessToken");
+  window.localStorage.removeItem("refreshToken");
 }
 
 // 이름을 뭘로 해야할지..
