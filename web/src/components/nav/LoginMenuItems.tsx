@@ -18,7 +18,6 @@ export function LoginMenuItems() {
   );
 }
 
-// TODO : react query 유저정보 가져오는 로직으로 변경
 function useIsLogin() {
   const { isSuccess } = useUserQuery();
 
