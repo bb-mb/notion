@@ -1,7 +1,7 @@
 import { useEffect } from "react";
+import { Toaster } from "react-hot-toast";
 import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { Toaster } from "react-hot-toast";
 import type { AppProps } from "next/app";
 
 import { initFirebase } from "lib/setting";
