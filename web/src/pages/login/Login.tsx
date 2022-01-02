@@ -19,11 +19,11 @@ export const Login: NextPage = () => {
   };
 
   return (
-    <Layout>
+    <>
       로그인
       <button className="btn" onClick={googleLogin}>
         로그인
       </button>
-    </Layout>
+    </>
   );
 };

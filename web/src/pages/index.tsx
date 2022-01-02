@@ -9,11 +9,11 @@ const Home: NextPage = () => {
   };
 
   return (
-    <Layout>
+    <>
       <button className="btn" onClick={onClick}>
         check!
       </button>
-    </Layout>
+    </>
   );
 };
 
