@@ -26,7 +26,6 @@ describe("노션 페이지 파싱 테스트", () => {
       thumbnail:
         "https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fe4cbe811-0d3b-4293-9892-1b11007c7257%2F1.jpeg?table=block&id=10b1ea52-a6bc-4295-895c-f4078b7a4aed&cache=v2",
       value: notionDB[rootPageId],
-      cleanUrl: rootPageId,
       updatedAt: new Date(1640699483166),
     });
   });

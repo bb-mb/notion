@@ -1,12 +1,22 @@
 import { Block } from "notion-types";
 
+export interface IBlog {
+  subdomain: string;
+  title: string;
+  gaKey: string;
+  icon: string;
+  pages: [string];
+  cleanUrls: {
+    [key: string]: string;
+  };
+  createdAt: date;
+}
 export interface IPage {
   pageId: string;
   author: string;
   title: string;
   thumbnail: string;
   value: object;
-  cleanUrl: string;
   count?: number;
   createdAt?: date;
   updatedAt: date;
@@ -16,6 +26,7 @@ export interface IUser {
   firebaseId: stirng;
   name: string;
   email: string;
+  blogs: [string];
   createdAt: date;
 }
 

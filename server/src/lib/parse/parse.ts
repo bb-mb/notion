@@ -46,7 +46,6 @@ export class PageParser {
       title: this.parseHelper.getPageTitle(page),
       thumbnail: this.parseHelper.getPageThumbNail(page),
       value: page,
-      cleanUrl: this.parseHelper.getPageId(page),
       updatedAt: new Date(Date.now()),
     };
   }

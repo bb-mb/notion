@@ -7,7 +7,6 @@ const pageSchema = new mongoose.Schema<IPage>({
   title: String,
   thumbnail: String,
   value: Object,
-  cleanUrl: String,
   count: {
     type: Number,
     default: 0,
