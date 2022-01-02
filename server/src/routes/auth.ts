@@ -42,7 +42,7 @@ router.post("/refresh", (req, res) => {
   try {
     const { firebaseId, name, email } = jwt.verifyRefreshToken(
       refreshToken
-    ) as IUser;
+    ) as { firebaseId: string; name: string; email: string };
 
     res.json({
       msg: "리프레쉬 성공",

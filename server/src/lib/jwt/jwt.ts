@@ -24,7 +24,7 @@ export class JWT {
   }
 
   getRefreshToken(user: IUser) {
-    return jwt.sign(user, this.refreshKey, { expiresIn: "1m" });
+    return jwt.sign(user, this.refreshKey, { expiresIn: "90d" });
   }
 
   getTokens(user: IUser) {

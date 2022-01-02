@@ -1,4 +1,5 @@
 import express from "express";
+import morgan from "morgan";
 import cors from "cors";
 
 import { authRouter, pageRouter, userRouter } from "@/routes";
@@ -8,6 +9,7 @@ const PORT = 3001;
 const app = express();
 
 app.use(express.json());
+app.use(morgan("tiny"));
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use("/page", pageRouter);
 app.use("/auth", authRouter);

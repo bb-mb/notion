@@ -6,6 +6,7 @@ import { apiSetting } from "lib/api";
 import { invalidateQueries } from "lib/query";
 import { MSG, PATH } from "lib/constants";
 import { NavItem } from "./NavItem";
+import { useUserQuery } from "queries/user";
 
 export function LoginMenuItems() {
   const { isLogin } = useIsLogin();
@@ -19,18 +20,9 @@ export function LoginMenuItems() {
 
 // TODO : react query 유저정보 가져오는 로직으로 변경
 function useIsLogin() {
-  const [isLogin, setIsLogin] = useState(false);
-  useEffect(() => {
-    function checkStorage() {
-      setIsLogin(!!localStorage.getItem("accessToken"));
-    }
-    checkStorage();
-    window.addEventListener("storage", checkStorage);
+  const { isSuccess } = useUserQuery();
 
-    return () => window.removeEventListener("storage", checkStorage);
-  }, []);
-
-  return { isLogin };
+  return { isLogin: isSuccess };
 }
 
 function logout() {
