@@ -1,11 +1,11 @@
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { CgLogIn, CgLogOut } from "react-icons/cg";
 
 import { apiSetting } from "lib/api";
 import { invalidateQueries } from "lib/query";
 import { MSG, PATH } from "lib/constants";
 import { NavItem } from "./NavItem";
-import { useEffect, useMemo, useState } from "react";
-import toast from "react-hot-toast";
 
 export function LoginMenuItems() {
   const { isLogin } = useIsLogin();
