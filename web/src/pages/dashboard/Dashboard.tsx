@@ -1,5 +1,10 @@
+import { OnlyLoginUser } from "components/wrap/OnlyLoginUser";
 import { NextPage } from "next";
 
 export const Dashboard: NextPage = () => {
-  return <div>dashboard</div>;
+  return (
+    <OnlyLoginUser>
+      <div>dashboard</div>
+    </OnlyLoginUser>
+  );
 };
