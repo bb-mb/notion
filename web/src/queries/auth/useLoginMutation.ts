@@ -4,6 +4,7 @@ import { api, apiSetting } from "lib/api";
 import { apiPromiseToast } from "lib/toast";
 import { useCustomMutation, invalidateQueries } from "lib/query";
 import { IApiResponse } from "types";
+import { PATH } from "lib/constants";
 
 export const useLoginMutation = () =>
   useCustomMutation<{ tokenId: string }>(
@@ -12,7 +13,7 @@ export const useLoginMutation = () =>
       onSuccess: (res) => {
         saveTokens(res);
         invalidateQueries();
-        router.push("/");
+        router.push(PATH.DASHBOARD);
       },
     }
   );
