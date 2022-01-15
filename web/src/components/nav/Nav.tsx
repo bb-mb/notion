@@ -20,7 +20,7 @@ export function Nav() {
             </div>
           </Link>
         </div>
-        <NavItem Icon={CgHome} text="Home" />
+        <NavItem Icon={CgHome} href={PATH.DASHBOARD} text="Home" />
         <NavItem Icon={CgEditMarkup} text="Home" />
         <NavItem Icon={CgProfile} text="Home" />
       </div>

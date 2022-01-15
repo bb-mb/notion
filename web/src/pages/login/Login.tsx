@@ -2,7 +2,6 @@ import { NextPage } from "next";
 import toast from "react-hot-toast";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-import { Layout } from "components/layout";
 import { useLoginMutation } from "queries";
 
 export const Login: NextPage = () => {
